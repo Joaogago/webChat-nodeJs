@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressValidator());
 
 /* efetua o autoload das rotas, dos models e dos controllers para o objeto app */
-consign()
+consign({cwd: process.cwd() + "/app"})
     .include('app/routes')
     .then('app/controllers')
     .into(app);
