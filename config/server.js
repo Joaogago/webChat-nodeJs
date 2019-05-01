@@ -30,7 +30,6 @@ app.use(expressValidator());
 consign()
     .include('app/routes')
     .then('app/controllers')
-    .then('app/models')
     .into(app);
 
 /* exportar o objeto app */
