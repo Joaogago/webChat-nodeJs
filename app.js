@@ -3,7 +3,7 @@ var app = require('./config/server');
 
 /* parametrizar porta de escuta */
 /* no caso do chat precisamos colocar o listen em uma variavel para passar para o soket.io para saber em que porta ele vai responder*/
-var server = app.listen(80, function(){
+var server = app.listen(process.env.PORT, function(){
     console.log('Servidor online');
 });
 
@@ -26,7 +26,7 @@ io.on('connection', function(socket){
         /* o Emit faz o emit da msg apenas para quem fez a chamda da função, ja quando se usa o broadcast a msg vai para todos conectados no socket*/
         socket.emit('msgParaCliente', data);
         socket.broadcast.emit('msgParaCliente', data);
-        
+
         if(parseInt(data.apelido_atualizado_nos_clientes) == 0){
             socket.emit('participantesParaCliente', {apelido: data.apelido});
             socket.broadcast.emit('participantesParaCliente',{apelido: data.apelido});
