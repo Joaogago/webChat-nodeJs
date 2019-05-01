@@ -3,7 +3,7 @@ var app = require('./config/server');
 
 /* parametrizar porta de escuta */
 /* no caso do chat precisamos colocar o listen em uma variavel para passar para o soket.io para saber em que porta ele vai responder*/
-var server = app.listen(process.env.PORT, function(){
+var server = app.listen(80, function(){
     console.log('Servidor online');
 });
 
